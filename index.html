@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Ex2</title>
+    </head>
+    <body>
+        <h1>Получаем главную страницу методом GET в протоколе HTTP 1.0</h1> 
+        <a>Используется запрос: <br/>
+            GET / HTTP/1.0 <br/>
+            Host: 212.192.134.20:80</a><br/>
+        <img src="./1.png"><br/>
+        <h1>Получаем внутреннюю страницу методом GET в протоколе HTTP 1.1</h1> 
+        <a>Используется запрос: <br/>
+            GET /ex2/ HTTP/1.1 <br/>
+            Host: u52925.kubsu-dev.ru</a><br/>
+        <img src="./2.png"><br/>
+        <h1>Определем размер файла file.tar.gz, не скачивая его</h1> 
+        <a>Используются 2 вида запросов - через wget и стандартный через telnet: (Значение Content-length - размер файла) <br/>
+            wget --spider --server-response http://u52979.kubsu-dev.ru/ex2/file.tar.gz <br/> <br/>
+            HEAD /ex2/file.tar.gz HTTP/1.1 <br/>
+            Host: u52979.kubsu-dev.ru</a><br/>
+        <img src="./3.png"><br/>
+        <h1>Определяем медиатип ресурса /image.png</h1> 
+        <a>Используется запрос (Значение Content-Type - ответ на вопрос): <br/>
+            HEAD /ex2/image.png HTTP/1.1 <br/>
+            Host: u52979.kubsu-dev.ru <br/>
+            Accept: image/png</a> <br/>
+        <img src="./4.png"> <br/>
+        <h1>Отправляем комментарий на сервер по адресу /index.php</h1> 
+        <a>Используется запрос: (message - отправляемый кооментарий, в ответе получаем Array в котором находится отправленный текст) <br/>
+            
+            POST /ex2/index.php HTTP/1.1 <br/>
+            Host: u52979.kubsu-dev.ru <br/>
+            Content-Type: application/x-www-form-urlencoded <br/>
+            Content-Length: 25 <br/>
+            <br/>
+            message=Hi%2C%20World! <br/>
+        <img src="./5.png"> <br/>
+        <h1>Получаем первые 100 байт файла /file.tar.gz</h1> 
+        <a>Используется запрос: (В ответ получаем набор символов - первые 100 байт) <br/>
+            GET /ex2/file.tar.gz HTTP/1.1 <br/>
+            Host: u52979.kubsu-dev.ru <br/>
+            Range: bytes=0-99 <br/>
+        <img src="./6.png"> <br/>
+        <h1>Определем кодировку ресурса /index.php</h1> 
+        <a>Используется запрос: (Кодировка определяется посредством тега "Accept-Encoding")<br/>
+            HEAD /ex2/index.php HTTP/1.1 <br/>
+            Host: u52979.kubsu-dev.ru <br/>
+            Accept-Encoding: gzip <br/>
+
+        <img src="./7.png"> <br/>
+    </body>
+</html>
